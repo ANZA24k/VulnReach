@@ -1,0 +1,22 @@
+{
+  "status": "FINALIZED",
+  "result": "MAJORITY_DISAGREE",
+  "execution": [
+    {
+      "execution": "ERROR",
+      "result": {
+        "raw": "AURvY3VtZW50IHNpemUgbGltaXQ=",
+        "status": "rollback",
+        "payload": "Document size limit"
+      }
+    },
+    {
+      "execution": "ERROR",
+      "result": {
+        "raw": "AURvY3VtZW50IHNpemUgbGltaXQ=",
+        "status": "rollback",
+        "payload": "Document size limit"
+      }
+    }
+  ]
+}

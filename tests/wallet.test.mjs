@@ -10,3 +10,8 @@ test('finalized rollback is a failure',()=>{let s=transactionState({statusName:'
 test('finalized without execution evidence never succeeds',()=>assert.equal(transactionState({statusName:'FINALIZED'}).success,false));
 test('finalized successful execution succeeds',()=>assert.equal(transactionState({statusName:'FINALIZED',result_name:'SUCCESS'}).success,true));
 test('cancelled transaction terminates',()=>assert.equal(transactionState({statusName:'CANCELED'}).terminal,true));
+test('Studionet majority plus successful final execution succeeds',()=>assert.equal(transactionState({statusName:'FINALIZED',result_name:'MAJORITY_AGREE',consensus_data:{leader_receipt:[{execution_result:'SUCCESS'}]}}).success,true));
+test('earlier failed rotation does not override final successful receipt',()=>assert.equal(transactionState({statusName:'FINALIZED',result_name:'MAJORITY_AGREE',consensus_data:{leader_receipt:[{execution_result:'ERROR'},{execution_result:'SUCCESS'}]}}).success,true));
+test('finalized without execution evidence is terminal but unverified',()=>{const s=transactionState({statusName:'FINALIZED'});assert.equal(s.terminal,true);assert.equal(s.success,false)});
+
+test('idle validator cancelled after quorum does not override successful leader',()=>assert.equal(transactionState({statusName:'FINALIZED',result_name:'MAJORITY_AGREE',consensus_data:{leader_receipt:[{mode:'leader',execution_result:'SUCCESS'},{mode:'validator',vote:'idle',execution_result:'ERROR',result:{status:'contract_error',payload:'idle'}}]}}).success,true));

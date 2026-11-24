@@ -1,11 +1,50 @@
 {
-  "address": "0xcD612C7fdABFE74C2Ded614366Cc53c594BA5399",
+  "address": "0x65329695921c877b8371f2F60084fb55bCF1523C",
   "chain_id": 61999,
   "account": "0xcD72fA5B6A496d84B4A10bCFF31D3B7c12346a9e",
   "transactions": [
     {
       "action": "deploy",
-      "hash": "0x8da078bf9dfd74c150ba908df4fc77c6f87fdc63e0a1dc5d27d5a09c4a3563fd"
+      "hash": "0x1f2f00d924a7dd4eec6a105abc2e97dc6572095a59051ab7939c391a73b01bcc"
+    },
+    {
+      "action": "create-exposed",
+      "hash": "0xd640453b0d4dc754306bf9810832489f27f44ae8dc813f09e12b725e14b02a9c"
+    },
+    {
+      "action": "lock-exposed",
+      "hash": "0xf752a831fdb7c5eadea3b5c92d2c497894d45ac67d37b9625654b6737a00b186"
+    },
+    {
+      "action": "create-patched",
+      "hash": "0x5cc01b74b41eacdd77c754c0fb5954bee00150d7eaf0cad9bb7f091025206954"
+    },
+    {
+      "action": "assess-exposed",
+      "hash": "0x906200e252e49f9b2c4768a5b69d4b4571b525562eadf01db3da2ca0e865e21f"
+    },
+    {
+      "action": "create-unknown",
+      "hash": "0x48c3fd5f7e7cbbd62ed498b4207a68690944c8204113c920d868a608b3cde292"
+    },
+    {
+      "action": "challenge-exposed",
+      "hash": "0xfa6457001e2fd62a71a254b89f4fe74a9299dd264f4ba08e99d8e76408ef36cc"
+    },
+    {
+      "action": "lock-patched",
+      "hash": "0xa06bb78e8a447483f9db53f2ac96b973c42c196e582de220bb56ac6ba7117c3d"
+    }
+  ],
+  "case_ids": [
+    "VR-LODASH-001",
+    "VR-PATCHED-001",
+    "VR-UNKNOWN-001"
+  ],
+  "expected_failures": [
+    {
+      "action": "empty-case-id",
+      "hash": "0x1a8074211260d628c95cb2492cf9a244447d0261528246047380e52c804c8a6e"
     }
   ]
 }

@@ -32,8 +32,8 @@ Frontend: React, TypeScript, Vite, GenLayerJS 2.0.0. Contract: standalone `contr
 
 1. Connect a browser wallet on Studionet, or select **GenLayer Studio** to sign with its built-in wallet. The site never requests a private key.
 2. Open **Review workbench**. Supply an npm `package-lock.json` v2/v3, the exact path under `packages`, a GHSA identifier, and public, scoped configuration evidence. The synthetic examples make the input format easy to inspect.
-3. Fetch the current OSV advisory. Review its exact SHA-256 and create an immutable case. A new case ID is required for changed evidence.
-4. **Lock authoritative advisory**. The contract independently retrieves the fixed OSV API URL, verifies the expected byte hash and GHSA identity, and stores the snapshot. If OSV changed, create a new case using the new hash.
+3. Fetch the current OSV advisory. Review its canonical JSON SHA-256 and create an immutable case. A new case ID is required for changed evidence.
+4. **Lock authoritative advisory**. The contract independently retrieves the fixed OSV API URL, verifies the expected canonical JSON hash and GHSA identity, and stores the snapshot. If OSV changed, create a new case using the new hash.
 5. **Request consensus assessment**. Version exclusion is deterministic; in-range conditions are reviewed by the leader and independently re-derived by validators. Full consensus is always requested.
 6. Read the finding and exact quotes. A reviewed case has a five-minute challenge window. Any wallet can raise one challenge. The owner can resolve it through another assessment of the same immutable evidence plus the challenge.
 7. Finalize after the window expires. Export the case and receipt chain for audit. Prior receipts cannot be overwritten.

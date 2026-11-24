@@ -4,7 +4,7 @@
   "package": "lodash",
   "dependency_path": "node_modules/lodash",
   "advisory_id": "GHSA-35jh-r3h4-6jhm",
-  "advisory_sha256": "025e389c03cc2511da5e218ac2bd227557b32e4d28b838d3b08d863926a14438",
+  "advisory_sha256": "7cf722323e4190b84d050dcf0565c0e9dc949fe6bdb63d9df46f9a14507c8498",
   "manifest": {
     "text": "{\n  \"name\": \"vulnreach-fixture\",\n  \"lockfileVersion\": 3,\n  \"packages\": {\n    \"\": {\n      \"name\": \"vulnreach-fixture\",\n      \"dependencies\": {\n        \"lodash\": \"4.17.21\"\n      }\n    },\n    \"node_modules/lodash\": {\n      \"version\": \"4.17.21\",\n      \"resolved\": \"https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz\"\n    }\n  }\n}",
     "source": "submitter-attestation",

@@ -32,7 +32,7 @@ def run(fn, validator):
     return result
 def prompt(*args, **kwargs):
     state['calls'] += 1
-    return json.dumps(state['prompt'])
+    return state['prompt'] if kwargs.get('response_format') == 'json' else json.dumps(state['prompt'])
 gl.vm = types.SimpleNamespace(UserError=UserError, Return=Return, run_nondet_unsafe=run)
 gl.eq_principle = types.SimpleNamespace(strict_eq=strict)
 gl.nondet = types.SimpleNamespace(web=types.SimpleNamespace(get=lambda url: types.SimpleNamespace(status=200,body=state['body'].encode())),exec_prompt=prompt)
@@ -47,7 +47,7 @@ def doc(text): return {'text':text,'source':'submitter-attestation','bytes':len(
 def advisory():
     return {'id':'GHSA-35jh-r3h4-6jhm','modified':'2024-01-01T00:00:00Z','details':'Lodash before 4.17.21 is vulnerable via the template function.','affected':[{'package':{'name':'lodash','ecosystem':'npm'},'ranges':[{'type':'SEMVER','events':[{'introduced':'0'},{'fixed':'4.17.21'}]}]}]}
 def sample(version='4.17.20'):
-    return {'id':'CASE-001','title':'Template review','package':'lodash','dependency_path':'node_modules/lodash','advisory_id':advisory()['id'],'advisory_sha256':c.sha(state['body']),'manifest':doc(json.dumps({'lockfileVersion':3,'packages':{'node_modules/lodash':{'version':version,'resolved':f'https://registry.npmjs.org/lodash/-/lodash-{version}.tgz'}}})),'configuration':doc('The service passes untrusted user input to the lodash template function.')}
+    return {'id':'CASE-001','title':'Template review','package':'lodash','dependency_path':'node_modules/lodash','advisory_id':advisory()['id'],'advisory_sha256':c.sha(c.canonical(json.loads(state['body']))),'manifest':doc(json.dumps({'lockfileVersion':3,'packages':{'node_modules/lodash':{'version':version,'resolved':f'https://registry.npmjs.org/lodash/-/lodash-{version}.tgz'}}})),'configuration':doc('The service passes untrusted user input to the lodash template function.')}
 @pytest.fixture(autouse=True)
 def reset():
     state.update(body=json.dumps(advisory()),prompt={'status':'CONDITIONS_MET','advisory_quote':'vulnerable via the template function','configuration_quote':'passes untrusted user input to the lodash template function'},calls=0)
@@ -116,7 +116,7 @@ def test_owner_enforced():
     obj=created();gl.message.sender_address='0x'+'2'*40
     with pytest.raises(UserError):obj.lock_case('CASE-001')
 def test_snapshot_change_rejected():
-    obj=created();state['body']+=' '
+    obj=created();data=json.loads(state['body']);data['details']+=' Changed.';state['body']=json.dumps(data)
     with pytest.raises(UserError):obj.lock_case('CASE-001')
 def test_cannot_skip_lock():
     obj=created()
@@ -157,3 +157,6 @@ def test_expired_challenge():
     obj=locked();obj.assess('CASE-001');gl.message_raw['datetime']='2026-11-24T00:05:00Z'
     with pytest.raises(UserError):obj.challenge('CASE-001','Late challenge')
 def test_unknown_case_read(): assert c.VulnReach().get_case('missing')=='{}'
+
+def test_advisory_transport_whitespace_is_irrelevant():
+    obj=created();state['body']=json.dumps(json.loads(state['body']),indent=4);obj.lock_case('CASE-001');assert json.loads(obj.get_case('CASE-001'))['state']=='LOCKED'

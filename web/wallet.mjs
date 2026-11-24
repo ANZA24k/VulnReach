@@ -15,9 +15,11 @@ export async function connectWallet(provider) {
   return accounts[0];
 }
 export function transactionState(tx) {
-  const status = String(tx.statusName || tx.status || '').toUpperCase();
-  const receipts = tx.consensus_data?.leader_receipt || [];
-  const failed = tx.result_name === 'FAILURE' || tx.result_name === 'ERROR' || receipts.some(r => ['ERROR','CONTRACT_ERROR'].includes(r.execution_result) || r.result?.status === 'rollback');
-  const success = status === 'FINALIZED' && !failed && (tx.result_name === 'SUCCESS' || receipts.some(r => r.execution_result === 'SUCCESS'));
-  return {status: status || 'PENDING',success,terminal:success || failed || ['CANCELED','CANCELLED','UNDETERMINED'].includes(status),failed};
+  const status = String(tx.statusName || tx.status_name || tx.status || '').toUpperCase();
+  const receipts = tx.consensus_data?.leader_receipt;
+  const leaders = Array.isArray(receipts) ? receipts.filter(r => r.mode === 'leader') : [];
+  const last = leaders.length ? leaders.at(-1) : Array.isArray(receipts) ? receipts.filter(r=>r.vote !== 'idle').at(-1) : receipts;
+  const failed = ['FAILURE','ERROR'].includes(tx.result_name) || ['ERROR','CONTRACT_ERROR'].includes(last?.execution_result) || last?.result?.status === 'rollback';
+  const success = status === 'FINALIZED' && !failed && (tx.result_name === 'SUCCESS' || (tx.result_name === 'MAJORITY_AGREE' && last?.execution_result === 'SUCCESS'));
+  return {status: status || 'PENDING',success,terminal:status === 'FINALIZED' || ['CANCELED','CANCELLED','UNDETERMINED','REJECTED','FAILED'].includes(status),failed};
 }

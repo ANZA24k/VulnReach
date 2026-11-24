@@ -1,0 +1,26 @@
+{
+  "address": "0xcD612C7fdABFE74C2Ded614366Cc53c594BA5399",
+  "chain_id": 61999,
+  "account": "0xcD72fA5B6A496d84B4A10bCFF31D3B7c12346a9e",
+  "transactions": [
+    {
+      "action": "deploy",
+      "hash": "0x8da078bf9dfd74c150ba908df4fc77c6f87fdc63e0a1dc5d27d5a09c4a3563fd"
+    },
+    {
+      "action": "create-exposed",
+      "hash": "0xc364a0bf7e6003f5e097dd11779a1bfd5de49167a87e501cb7616f077e2170ac"
+    }
+  ],
+  "note": "Superseded before release: raw HTTP formatting caused the intended hash-mismatch rejection. This is not the public release contract.",
+  "expected_failures": [
+    {
+      "action": "lock-exposed",
+      "hash": "0x2a5b23583b57130acb458f0ffb0ce671392fc947e3db66cc66975aeecd2e635c"
+    },
+    {
+      "action": "assess-before-lock",
+      "hash": "0xbdef881a1ae484526d27bc05c46e9b353539bfcadf96ad321014b49c166ad2dc"
+    }
+  ]
+}

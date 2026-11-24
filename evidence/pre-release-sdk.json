@@ -1,0 +1,26 @@
+{
+  "address": "0xf7dB100F8AA3f48f164A2e2157c49943C4534a50",
+  "chain_id": 61999,
+  "account": "0xcD72fA5B6A496d84B4A10bCFF31D3B7c12346a9e",
+  "transactions": [
+    {
+      "action": "deploy",
+      "hash": "0x4ff1ce553da1a5a7d25f1068fa530133b3f0f77e47435a42e3a2f9478282b4b0"
+    },
+    {
+      "action": "create-exposed",
+      "hash": "0xc61db6ba39567c0460015b1e4ca980f98ae0ea2b57af4366f9f333b627ff8c88"
+    },
+    {
+      "action": "lock-exposed",
+      "hash": "0x139f1489fc3a655bae2bf7bd727444ee3d71a9301f416120c49b4a58aeafe7bc"
+    }
+  ],
+  "note": "Superseded before release: JSON-mode SDK response was parsed as text; no successful AI assessment was claimed.",
+  "expected_failures": [
+    {
+      "action": "assess-exposed",
+      "hash": "0xd427257b96bd82ef72ad9637d37e594cef4bccd25e2b03fa06f9e9ba0a39faae"
+    }
+  ]
+}

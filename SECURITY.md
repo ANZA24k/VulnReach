@@ -4,7 +4,7 @@ VulnReach assesses a specific advisory against specific submitted documents. It 
 
 ## Trust boundaries
 
-OSV is the authoritative vulnerability metadata source for this workflow. The fixed endpoint is constructed only from a validated GHSA ID; callers cannot provide arbitrary fetch URLs. An exact expected raw UTF-8 SHA-256 and the advisory's identity must match before locking. Retrieval occurs inside strict-equality consensus. The current API response must be at most 60,000 bytes; advisory prose at most 18,000 bytes.
+OSV is the authoritative vulnerability metadata source for this workflow. The fixed endpoint is constructed only from a validated GHSA ID; callers cannot provide arbitrary fetch URLs. An exact expected canonical JSON SHA-256 and the advisory's identity must match before locking. Retrieval occurs inside strict-equality consensus. The current API response must be at most 60,000 bytes; advisory prose at most 18,000 bytes.
 
 Manifest and configuration documents are submitter-attested. Hash, byte count, and provenance labels are validated; URL ownership and runtime deployment identity are not. Frontend text is rendered through React escaping; evidence is never inserted as HTML. Users must redact secrets before submitting immutable public evidence.
 
