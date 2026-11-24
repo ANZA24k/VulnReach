@@ -1,0 +1,11 @@
+{
+  "address": "0xcD612C7fdABFE74C2Ded614366Cc53c594BA5399",
+  "chain_id": 61999,
+  "account": "0xcD72fA5B6A496d84B4A10bCFF31D3B7c12346a9e",
+  "transactions": [
+    {
+      "action": "deploy",
+      "hash": "0x8da078bf9dfd74c150ba908df4fc77c6f87fdc63e0a1dc5d27d5a09c4a3563fd"
+    }
+  ]
+}

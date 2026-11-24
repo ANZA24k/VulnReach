@@ -1,0 +1,20 @@
+{
+  "id": "VR-PATCHED-001",
+  "title": "Patched template service",
+  "package": "lodash",
+  "dependency_path": "node_modules/lodash",
+  "advisory_id": "GHSA-35jh-r3h4-6jhm",
+  "advisory_sha256": "025e389c03cc2511da5e218ac2bd227557b32e4d28b838d3b08d863926a14438",
+  "manifest": {
+    "text": "{\n  \"name\": \"vulnreach-fixture\",\n  \"lockfileVersion\": 3,\n  \"packages\": {\n    \"\": {\n      \"name\": \"vulnreach-fixture\",\n      \"dependencies\": {\n        \"lodash\": \"4.17.21\"\n      }\n    },\n    \"node_modules/lodash\": {\n      \"version\": \"4.17.21\",\n      \"resolved\": \"https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz\"\n    }\n  }\n}",
+    "source": "submitter-attestation",
+    "bytes": 328,
+    "sha256": "fd2b9b83ed64ca69ee96aa38de7b43b1765f00e1fdb40086c7901de818af27b0"
+  },
+  "configuration": {
+    "text": "Synthetic integration fixture; not a production deployment. Complete scope: this service has a single route /render using lodash.template on the Node.js server. The installed lodash version is exactly 4.17.21.",
+    "source": "submitter-attestation",
+    "bytes": 209,
+    "sha256": "fcb69133e2ec901312a3f488a5c3202c5a0cee1ea1a830d24ec6390fb338abab"
+  }
+}

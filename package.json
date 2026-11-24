@@ -1,0 +1,41 @@
+{
+  "name": "vulnreach",
+  "version": "1.0.0",
+  "description": "Evidence-bound vulnerability applicability reviews on GenLayer",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "test": "python -m pytest -q",
+    "test:wallet": "node --test tests/wallet.test.mjs",
+    "verify:live": "node scripts/verify-live.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ANZA24k/VulnReach.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ANZA24k/VulnReach/issues"
+  },
+  "homepage": "https://github.com/ANZA24k/VulnReach#readme",
+  "dependencies": {
+    "genlayer-js": "^2.0.0",
+    "lucide-react": "^1.78.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.2.2"
+  }
+}

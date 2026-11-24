@@ -1,0 +1,12 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {connectWallet,transactionState} from '../web/wallet.mjs';
+const account='0x'+'1'.repeat(40);
+test('connects and checks existing Studionet account',async()=>{const p={request:async({method})=>method==='eth_requestAccounts'?[account]:'0xf22f'};assert.equal(await connectWallet(p),account)});
+test('adds missing chain then explicitly switches and verifies',async()=>{let chain='0x1',added=false,methods=[];const p={request:async({method})=>{methods.push(method);if(method==='eth_requestAccounts')return[account];if(method==='eth_chainId')return chain;if(method==='wallet_switchEthereumChain'){if(!added)throw Object.assign(Error(),{code:4902});chain='0xf22f'}if(method==='wallet_addEthereumChain')added=true;}};assert.equal(await connectWallet(p),account);assert.equal(methods.filter(x=>x==='wallet_switchEthereumChain').length,2)});
+test('rejected switch does not add chain',async()=>{const p={request:async({method})=>{if(method==='eth_requestAccounts')return[account];if(method==='eth_chainId')return '0x1';throw Object.assign(Error('Rejected'),{code:4001})}};await assert.rejects(connectWallet(p),/Rejected/)});
+test('missing wallet has actionable error',async()=>assert.rejects(connectWallet(null),/Studio/));
+test('empty wallet account rejected',async()=>assert.rejects(connectWallet({request:async()=>[]}),/account/));
+test('accepted is provisional',()=>assert.equal(transactionState({statusName:'ACCEPTED',result_name:'SUCCESS'}).success,false));
+test('finalized rollback is a failure',()=>{let s=transactionState({statusName:'FINALIZED',result_name:'SUCCESS',consensus_data:{leader_receipt:[{execution_result:'ERROR'}]}});assert.equal(s.failed,true);assert.equal(s.success,false)});
+test('finalized without execution evidence never succeeds',()=>assert.equal(transactionState({statusName:'FINALIZED'}).success,false));
+test('finalized successful execution succeeds',()=>assert.equal(transactionState({statusName:'FINALIZED',result_name:'SUCCESS'}).success,true));
+test('cancelled transaction terminates',()=>assert.equal(transactionState({statusName:'CANCELED'}).terminal,true));

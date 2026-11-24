@@ -1,0 +1,20 @@
+{
+  "id": "VR-UNKNOWN-001",
+  "title": "Undocumented deployment",
+  "package": "lodash",
+  "dependency_path": "node_modules/lodash",
+  "advisory_id": "GHSA-35jh-r3h4-6jhm",
+  "advisory_sha256": "025e389c03cc2511da5e218ac2bd227557b32e4d28b838d3b08d863926a14438",
+  "manifest": {
+    "text": "{\n  \"name\": \"vulnreach-fixture\",\n  \"lockfileVersion\": 3,\n  \"packages\": {\n    \"\": {\n      \"name\": \"vulnreach-fixture\",\n      \"dependencies\": {\n        \"lodash\": \"4.17.20\"\n      }\n    },\n    \"node_modules/lodash\": {\n      \"version\": \"4.17.20\",\n      \"resolved\": \"https://registry.npmjs.org/lodash/-/lodash-4.17.20.tgz\"\n    }\n  }\n}",
+    "source": "submitter-attestation",
+    "bytes": 328,
+    "sha256": "2a1ea34ee7868f3a02cd554c71db356303c64ebbd995f236c7d451f6636b585d"
+  },
+  "configuration": {
+    "text": "Synthetic integration fixture; not a production deployment. The deployment configuration, template usage, and input trust boundaries have not been documented.",
+    "source": "submitter-attestation",
+    "bytes": 158,
+    "sha256": "7630fd547805fd4103941ecc0c47518b43477a840bf45e767fa5766747a5265b"
+  }
+}
