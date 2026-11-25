@@ -8,6 +8,8 @@ A scanner alert identifies a potentially vulnerable dependency. Teams still disa
 
 ## Links
 
+- Live application: https://earnest-choux-399835.netlify.app/
+
 - Source: https://github.com/ANZA24k/VulnReach
 - Netlify upload instructions and deployed contract: see [DEPLOYMENT.md](DEPLOYMENT.md).
 - Real network transactions and verification: [EVIDENCE.md](EVIDENCE.md).

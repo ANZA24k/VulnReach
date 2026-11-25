@@ -34,4 +34,14 @@ Only live operations listed as successfully verified in the exported evidence sh
 
 ## Netlify handoff
 
-The requested hosting target is Netlify. The delivery ZIP includes a prebuilt static website, the complete source, Netlify headers and SPA fallback, and upload instructions. Publication will be performed by the owner; no Netlify live URL is claimed before it is supplied. Final package validation: 52 Python tests and 21 JavaScript tests passed; TypeScript and production build passed. Live finalization and the patched/insufficient-evidence comparison assessments remain unconfirmed because Studio returned request-limit, occupied execution-slot, and database errors during the last verification attempts.
+The requested hosting target is Netlify. The delivery ZIP includes a prebuilt static website, the complete source, Netlify headers and SPA fallback, and upload instructions. The owner published the site at https://earnest-choux-399835.netlify.app/. Final package validation: 52 Python tests and 21 JavaScript tests passed; TypeScript and production build passed. The main case is now finalized with verified successful full-consensus execution. The patched/insufficient-evidence comparison assessments remain unconfirmed following the earlier Studio congestion.
+
+## Published-site verification — 2026-11-25
+
+Public Netlify site: https://earnest-choux-399835.netlify.app/
+
+Netlify project `fed062eb-2f05-449e-aab4-ad4d8da5135c`, published deploy `6b0678e2a93c390f50ad00b9`, is ready and its production URL requires no login or password. HTTP 200, JavaScript assets, security headers, application navigation, wallet chooser and local Studio input-download mode were checked. The frontend reads the real `VR-LODASH-001` record as **FINALIZED / AFFECTED**, with two assessments and the retained challenge. No new signing or write was performed during this published-site check.
+
+Finalization transaction: https://explorer-studio.genlayer.com/tx/0x21bfc21b67e9bab84b46686dbfa2cfe6db7851874e0a36bc3853a6e81a8173f3
+
+This supersedes the packaging-time uncertainty about main-case finalization. The patched and insufficient-evidence comparison cases still have no confirmed live assessments; their behavior is covered by automated tests.

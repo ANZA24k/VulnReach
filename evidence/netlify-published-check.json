@@ -1,0 +1,40 @@
+{
+  "url": "https://earnest-choux-399835.netlify.app/",
+  "http_status": 200,
+  "checked_on": "2026-11-25",
+  "assets": [
+    {
+      "path": "/assets/genlayer-DnBRv6ol.js",
+      "bytes": 655420,
+      "matches_verified_build": true,
+      "sha256": "cf52410e3db088f32fbb8325bccfe535e07f35dcdeac87f76f81a15bc97c3ba4"
+    },
+    {
+      "path": "/assets/index--Ht5aO-o.js",
+      "bytes": 256313,
+      "matches_verified_build": true,
+      "sha256": "56bc9fe5046eca9fd176aa6c1b6e5ae089d9ce212a057eba81d4f2df942fa943"
+    },
+    {
+      "path": "/assets/index-D1SxbIcH.css",
+      "bytes": 23759,
+      "matches_verified_build": true,
+      "sha256": "81e40fba5837fa06a41150206dcf2cc97c26c19610e6b9256e3ab7cbd8cd28d7"
+    },
+    {
+      "path": "/assets/react-Cb4AM5Ez.js",
+      "bytes": 11880,
+      "matches_verified_build": true,
+      "sha256": "aa89ca3e624d526159c8e4ae50fac425ed8297ad93729f7725764c8398fda63d"
+    }
+  ],
+  "contract": "0x65329695921c877b8371f2F60084fb55bCF1523C",
+  "main_case": {
+    "id": "VR-LODASH-001",
+    "state": "FINALIZED",
+    "outcome": "AFFECTED",
+    "assessments": 2
+  },
+  "studio_mode": "local input-download mode verified; no signing performed",
+  "netlify_deploy": "6b0678e2a93c390f50ad00b9"
+}

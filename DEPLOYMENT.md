@@ -1,6 +1,6 @@
 # Deployment
 
-- Public website: Netlify publication pending; the owner will provide the URL.
+- Public website: https://earnest-choux-399835.netlify.app/
 - GitHub: https://github.com/ANZA24k/VulnReach
 - Network: GenLayer Studionet, chain ID **61999**
 - RPC: https://studio.genlayer.com/api

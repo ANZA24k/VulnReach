@@ -300,6 +300,7 @@
   "challenged": true,
   "created_receipt": "ad653707c6a58f000070bde40ea1251b403668a335e22f7b6edf29c8c16a9eab",
   "deadline": 1795483810,
+  "final_receipt": "024609e190ff2b659b2987d3ab9f74ab811250fdd9eac2d95bba81b22378508e",
   "input": {
     "advisory_id": "GHSA-35jh-r3h4-6jhm",
     "advisory_sha256": "7cf722323e4190b84d050dcf0565c0e9dc949fe6bdb63d9df46f9a14507c8498",
@@ -323,6 +324,6 @@
   "locked_receipt": "46c2636a21733609fd957d66ff2d90bf532138cc854745940c25f3f1427dbf5a",
   "owner": "0xcD72fA5B6A496d84B4A10bCFF31D3B7c12346a9e",
   "range_status": "IN_RANGE",
-  "state": "REVIEWED",
+  "state": "FINALIZED",
   "version": "4.17.20"
 }
