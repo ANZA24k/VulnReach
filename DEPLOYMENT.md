@@ -1,6 +1,6 @@
 # Deployment
 
-- Public website: https://vulnreach.vercel.app
+- Public website: Netlify publication pending; the owner will provide the URL.
 - GitHub: https://github.com/ANZA24k/VulnReach
 - Network: GenLayer Studionet, chain ID **61999**
 - RPC: https://studio.genlayer.com/api
@@ -18,7 +18,7 @@ npm run build
 npm run dev -- --host 127.0.0.1
 ```
 
-`web/deployment.json` contains the public address, explorer origin and initial case ID. No `.env` is needed. The Vercel project is `vulnreach`, owned by team `anza0x`; Node.js 22.x, install `npm ci`, build `npm run build`, output `dist`. `vercel.json` defines static security headers. The application is publicly readable without a Vercel account.
+`web/deployment.json` contains the public address, explorer origin and initial case ID. No `.env` is needed. Netlify Git builds use Node.js 22, install `npm ci`, build `npm run build`, and publish `dist`. `netlify.toml` contains build settings. `public/_headers` and `public/_redirects` are copied into the built website for manual uploads. No environment variables or server functions are required. The previous Vercel deployment is historical; the requested publication target is Netlify.
 
 ## Reproduce the contract
 

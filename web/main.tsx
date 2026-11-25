@@ -10,6 +10,7 @@ import patched from '../fixtures/patched.json';
 import uncertain from '../fixtures/uncertain.json';
 import {connectWallet,transactionState} from './wallet.mjs';
 import {makeReadQueue} from './rpc.mjs';
+import {canonical} from './canonical.mjs';
 import './style.css';
 
 declare global {interface Window {ethereum?:any}}
@@ -21,8 +22,6 @@ const human=(s:string)=>s?.replaceAll('_',' ').toLowerCase();
 const error=(e:any)=>/rate limit|server busy|execution slots/i.test(e.details||e.message||'')?'Studionet is busy. Wait a moment and refresh; your submitted transaction is not resent.':e.details||e.shortMessage||e.message||String(e);
 const queueRead=makeReadQueue();
 const download=(name:string,obj:unknown)=>{const url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
-const ordered=(v:any):any=>Array.isArray(v)?v.map(ordered):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,ordered(v[k])])):v;
-const canonical=(v:any)=>JSON.stringify(ordered(v)).replace(/[\u007f-\uffff]/g,c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'));
 async function digest(text:string){const b=new TextEncoder().encode(text);const h=await crypto.subtle.digest('SHA-256',b);return {text,bytes:b.length,sha256:Array.from(new Uint8Array(h),v=>v.toString(16).padStart(2,'0')).join(''),source:'submitter-attestation'}}
 async function read(fn:string,args:any[]=[]){if(!address)throw Error('Contract address is not configured.');return JSON.parse(await queueRead(()=>client.readContract({address,functionName:fn,args,transactionHashVariant:TransactionHashVariant.LATEST_FINAL})) as string)}
 function App(){

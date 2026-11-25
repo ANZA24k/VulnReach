@@ -34,6 +34,10 @@
     {
       "action": "lock-patched",
       "hash": "0xa06bb78e8a447483f9db53f2ac96b973c42c196e582de220bb56ac6ba7117c3d"
+    },
+    {
+      "action": "resolve-exposed",
+      "hash": "0x9c008ff2fbe4bb386a00bae6c45c09cdba93c3d73f874ae73b6f7569d9907e02"
     }
   ],
   "case_ids": [

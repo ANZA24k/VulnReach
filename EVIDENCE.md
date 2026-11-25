@@ -16,7 +16,7 @@ The deployed Python source is `contracts/vuln_reach.py`. `evidence/deployment.js
 
 52 Python tests cover stable SemVer boundaries and interval unions, unsupported formats, hash/byte binding, identity, authorization, immutable case IDs, exact quote grounding, conservative outcomes, challenge timing, finalization and receipt integrity. The explicit test shim reproduces the SDK's JSON-mode object return type; real GenVM schema and network checks are separate.
 
-Browser-provider and transaction tests cover MetaMask-compatible EIP-1193 connection, chain addition/switching, rejected connections, provisional acceptance, execution errors, final success, idle validators, saved-status semantics and bounded read-only RPC retries. Writes are never automatically resent.
+21 JavaScript tests cover canonical advisory commitments and Unicode encoding, plus browser-provider and transaction handling. They cover MetaMask-compatible EIP-1193 connection, chain addition/switching, rejected connections, provisional acceptance, execution errors, final success, idle validators, saved-status semantics and bounded read-only RPC retries. Writes are never automatically resent.
 
 `npm run build` checks TypeScript and builds production assets. No runtime dependency vulnerabilities were found in the audited installed dependencies during implementation.
 
@@ -31,3 +31,7 @@ A compact CSS viewport of 545 pixels was exercised through browser zoom. Overvie
 Run `npm test`, `npm run test:wallet`, `npm run build`, and `npm run verify:live`. The latter uses the live public RPC and can be temporarily blocked by its shared request or execution-slot limits. These failures do not become safe findings. The frontend queues reads and retries transient congestion; no write is silently resubmitted.
 
 Only live operations listed as successfully verified in the exported evidence should be represented as complete. No live MetaMask signature is claimed: actual signatures used the Studio built-in wallet; browser-wallet integration has provider tests. No public social post has been made.
+
+## Netlify handoff
+
+The requested hosting target is Netlify. The delivery ZIP includes a prebuilt static website, the complete source, Netlify headers and SPA fallback, and upload instructions. Publication will be performed by the owner; no Netlify live URL is claimed before it is supplied. Final package validation: 52 Python tests and 21 JavaScript tests passed; TypeScript and production build passed. Live finalization and the patched/insufficient-evidence comparison assessments remain unconfirmed because Studio returned request-limit, occupied execution-slot, and database errors during the last verification attempts.

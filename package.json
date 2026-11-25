@@ -11,7 +11,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "test": "python -m pytest -q",
-    "test:wallet": "node --test tests/wallet.test.mjs tests/rpc.test.mjs",
+    "test:wallet": "node --test tests/wallet.test.mjs tests/rpc.test.mjs tests/canonical.test.mjs",
     "verify:live": "node scripts/verify-live.mjs"
   },
   "repository": {

@@ -1,3 +1,4 @@
+import {canonical} from '../web/canonical.mjs';
 import fs from 'node:fs';import crypto from 'node:crypto';
 import {createClient} from 'genlayer-js';import{studionet}from'genlayer-js/chains';import{TransactionHashVariant}from'genlayer-js/types';
 import{transactionState}from'../web/wallet.mjs';import{makeReadQueue}from'../web/rpc.mjs';
@@ -7,8 +8,6 @@ const queue=makeReadQueue();
 const delay=()=>new Promise(r=>setTimeout(r,2300));
 const read=async(fn,args=[])=>{await delay();return JSON.parse(await queue(()=>client.readContract({address:d.address,functionName:fn,args,transactionHashVariant:TransactionHashVariant.LATEST_FINAL})))};
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
-const ordered=v=>Array.isArray(v)?v.map(ordered):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,ordered(v[k])])):v;
-const canonical=v=>JSON.stringify(ordered(v)).replace(/[\u007f-\uffff]/g,c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'));
 const code=await queue(()=>client.getContractCode(d.address));const remote=typeof code==='string'&&code.startsWith('0x')?Buffer.from(code.slice(2),'hex'):Buffer.from(code);const local=fs.readFileSync('contracts/vuln_reach.py');if(!remote.equals(local))throw Error('Deployed source differs from local source');
 const transactions=[];
 for(const t of d.transactions){await delay();const tx=await queue(()=>client.getTransaction({hash:t.hash}));const s=transactionState(tx);if(!s.success||tx.leader_only!==false)throw Error('Unverified full-consensus execution: '+t.action+' '+JSON.stringify(s));const summary={...t,status:tx.statusName,result:tx.result_name,leader_only:tx.leader_only,from:tx.from_address,votes:tx.consensus_data?.votes,executions:tx.consensus_data?.leader_receipt?.map(r=>r.execution_result)};transactions.push(summary);fs.writeFileSync('evidence/tx-'+t.action+'.json',JSON.stringify(summary,null,2)+'\n');}

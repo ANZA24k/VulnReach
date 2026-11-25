@@ -9,7 +9,7 @@ A scanner alert identifies a potentially vulnerable dependency. Teams still disa
 ## Links
 
 - Source: https://github.com/ANZA24k/VulnReach
-- Website and deployed contract: see [DEPLOYMENT.md](DEPLOYMENT.md).
+- Netlify upload instructions and deployed contract: see [DEPLOYMENT.md](DEPLOYMENT.md).
 - Real network transactions and verification: [EVIDENCE.md](EVIDENCE.md).
 - Submission text: [SUBMISSION.md](SUBMISSION.md).
 

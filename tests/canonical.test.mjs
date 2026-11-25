@@ -1,0 +1,3 @@
+import{test}from'node:test';import assert from'node:assert/strict';import fs from'node:fs';import crypto from'node:crypto';import{canonical}from'../web/canonical.mjs';
+test('OSV canonical snapshot matches the deployed contract commitment',()=>{const d=JSON.parse(fs.readFileSync('evidence/osv-snapshot.json'));assert.equal(crypto.createHash('sha256').update(canonical(d)).digest('hex'),'7cf722323e4190b84d050dcf0565c0e9dc949fe6bdb63d9df46f9a14507c8498')});
+test('canonical JSON matches Python ASCII escaping including surrogate pairs',()=>{assert.equal(canonical({z:'café',a:'😀'}),'{"a":"'+String.fromCharCode(92)+'ud83d'+String.fromCharCode(92)+'ude00","z":"caf'+String.fromCharCode(92)+'u00e9"}');assert.equal(canonical({z:2,a:[{b:1,a:2}]}),'{"a":[{"a":2,"b":1}],"z":2}')});

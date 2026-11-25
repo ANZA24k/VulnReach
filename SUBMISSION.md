@@ -8,7 +8,7 @@ VulnReach helps teams resolve disputed dependency vulnerability alerts with immu
 
 ## Review links
 
-- Website: https://vulnreach.vercel.app
+- Website: Netlify upload package provided; public URL pending publication.
 - Repository: https://github.com/ANZA24k/VulnReach
 - Contract: https://explorer-studio.genlayer.com/address/0x65329695921c877b8371f2F60084fb55bCF1523C
 - Deployment transaction: https://explorer-studio.genlayer.com/transactions/0x1f2f00d924a7dd4eec6a105abc2e97dc6572095a59051ab7939c391a73b01bcc
